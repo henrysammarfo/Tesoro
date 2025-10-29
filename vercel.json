@@ -3,7 +3,7 @@
   "outputDirectory": ".next",
   "framework": "nextjs",
   "env": {
-    "NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID": "@next_public_wallet_connect_project_id",
-    "NEXT_PUBLIC_ALCHEMY_API_KEY": "@next_public_alchemy_api_key"
+    "NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID": "649691e0e177e9b9db6ba66d0bded967",
+    "NEXT_PUBLIC_ALCHEMY_API_KEY": "NtEkHL_uUyg_az9K2qHjm"
   }
 }
