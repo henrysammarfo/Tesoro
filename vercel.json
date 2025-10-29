@@ -2,6 +2,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
+  "installCommand": "npm install --legacy-peer-deps",
   "env": {
     "NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID": "649691e0e177e9b9db6ba66d0bded967",
     "NEXT_PUBLIC_ALCHEMY_API_KEY": "NtEkHL_uUyg_az9K2qHjm"
