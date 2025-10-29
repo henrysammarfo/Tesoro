@@ -138,20 +138,6 @@ What we do:
 
 ---
 
-## Slide 10: The Ask
-**Seeking: $500K Seed Round**
-
-**Use of Funds:**
-- Product development (40%): $200K
-- Go-to-market (35%): $175K
-- Operations & team (25%): $125K
-
-**Milestones:**
-- $5M AUM by Month 3
-- $20M AUM by Month 6
-- Profitability by Month 12
-
-**Next Round:** Series A ($3-5M) at Month 9
 
 ---
 
