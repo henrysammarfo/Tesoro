@@ -1,3 +1,21 @@
+# Node/Next defaults
+.next/
+node_modules/
+.env*
+dist/
+out/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Build artifacts
+coverage/
+
+# Hide AI prompt documentation
+docs/CLAUDE_INTEGRATION_GUIDE.md
+docs/FOR_CLAUDE_INTEGRATION.md
 # Dependencies
 /node_modules
 /.pnp
