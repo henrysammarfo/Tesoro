@@ -1,0 +1,9 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "env": {
+    "NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID": "@next_public_wallet_connect_project_id",
+    "NEXT_PUBLIC_ALCHEMY_API_KEY": "@next_public_alchemy_api_key"
+  }
+}
