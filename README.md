@@ -1,184 +1,171 @@
-# Tesoro - Automated Treasury Yield for SMEs
+# Tesoro — Automated Treasury Yield for SMEs
 
 ![Tesoro Banner](https://via.placeholder.com/1200x400/0066FF/FFFFFF?text=Tesoro+-+Treasury+Management+Reimagined)
 
 ## Overview
 
-Tesoro is an automated treasury management platform that helps SMEs earn 5-10% APY on idle business funds through yield-bearing stablecoins. Built for Devconnect Buenos Aires 2024.
-
-## The Problem
-
-Small and medium-sized businesses, especially in emerging markets like Argentina, face:
-- **Inflation erosion**: Cash loses value daily (40%+ inflation in Argentina)
-- **Zero yield**: Traditional business accounts earn 0-1% interest
-- **Limited access**: Complex DeFi protocols are inaccessible to non-technical founders
-- **Opportunity cost**: $12M+ in idle cash across SMEs earning nothing
-
-## Our Solution
-
-Tesoro provides one-click treasury management:
-1. **Deposit** stablecoins (USDC, USDT, DAI)
-2. **Auto-route** to highest-yielding DeFi protocols
-3. **Earn** 5-10% APY with full liquidity
-4. **Withdraw** anytime with no penalties
+Tesoro is an automated treasury management platform that helps SMEs earn yield on idle business funds via yield-bearing stablecoins. The product provides simple deposit/withdraw flows, real-time portfolio analytics, and automated allocation across supported DeFi protocols.
 
 ## Key Features
 
-- **Automated Yield Routing**: Smart contracts automatically allocate funds to highest-yielding protocols
-- **Bank-Grade Security**: Multi-signature wallets, audited contracts, institutional custody
-- **Real-Time Analytics**: Track yields, deposits, and returns with comprehensive dashboards
-- **Full Liquidity**: Withdraw anytime with no lock-up periods
-- **Transparent Fees**: 10% of yield generated, no hidden charges
+- **Automated yield routing**: Smart contracts route funds to the highest-yielding supported protocol(s).
+- **Secure by design**: Built on audited OpenZeppelin primitives with a minimal, reviewable surface area.
+- **Real-time analytics**: Portfolio balance, yield earned, allocations, and recent transactions.
+- **Full liquidity**: Withdraw anytime without lockups.
+- **Transparent fees**: Clear, simple fee model suitable for SMEs.
 
-## Market Opportunity
+## Architecture
 
-- **TAM**: $2.3T in SME idle cash globally
-- **Argentina**: $91.1B crypto market, highest LATAM adoption
-- **Timing**: Argentina legalized asset tokenization (2024)
-- **Revenue**: $99-$999/mo per business (B2B SaaS)
+- **Frontend**: Next.js App Router (React 19, TailwindCSS v4)
+- **Web3**: wagmi + WalletConnect, targeting `sepolia` and `baseSepolia`
+- **Contracts**: Solidity (Hardhat), OpenZeppelin contracts
+- **Data viz**: Recharts for charts and analytics
 
-## Technology Stack
+```
+App Router → Providers (wagmi + React Query) → Pages (Dashboard/Analytics/Transactions)
+           → UI components (modals, charts, tables)
+           → wagmi hooks → TesoroVault contract (deposit/withdraw/read)
+```
 
-- **Frontend**: Next.js 16, React 19, TailwindCSS v4
-- **Smart Contracts**: Solidity, OpenZeppelin
-- **Blockchain**: Ethereum, Polygon, Arbitrum
-- **DeFi Protocols**: Aave, Compound, Yearn, Curve
+## Repository Structure
 
-## Business Model
+- `app/` — Next.js routes and layout
+- `components/` — UI and dashboard components
+- `hooks/` — React hooks
+- `lib/` — web3 config, ABIs/addresses, utilities
+- `contracts/` — Solidity contracts
+- `scripts/` — Hardhat deployment/verification scripts
+- `docs/` — product and deployment documentation
 
-- **Revenue**: 10% of yield generated (0.5-1% of AUM annually)
-- **Target**: 1,000 businesses × $100K average = $100M AUM
-- **Annual Revenue**: $1M+ at scale
-- **Unit Economics**: 90%+ gross margin, $50 CAC, $1,200 LTV
+## Tech Stack
 
-## Competitive Advantages
+- Next.js 15, React 19, TailwindCSS v4
+- wagmi, viem, WalletConnect
+- Hardhat, Ethers, OpenZeppelin
+- Recharts
 
-1. **First Mover**: No direct competitor in LATAM SME treasury space
-2. **Local Expertise**: Built for emerging markets with high inflation
-3. **Simple UX**: Non-technical founders can use in 2 minutes
-4. **Regulatory Compliant**: Aligned with Argentina's new crypto regulations
+## Prerequisites
 
-## Roadmap
+- Node.js 18+
+- npm 9+
+- WalletConnect Project ID
+- RPC provider (e.g., Alchemy) for Sepolia
 
-**Phase 1 (Q4 2024)**: MVP launch, 50 pilot businesses
-**Phase 2 (Q1 2025)**: Multi-chain support, 500 businesses
-**Phase 3 (Q2 2025)**: Fiat on/off ramps, 2,000 businesses
-**Phase 4 (Q3 2025)**: Enterprise features, 5,000+ businesses
+## Setup
 
-## Team
-
-**[Founder 1 Name]** - CEO
-- Background in fintech and blockchain
-- Previously at [Company]
-- Expert in emerging markets
-
-**[Founder 2 Name]** - CTO
-- Full-stack blockchain developer
-- Built DeFi protocols with $10M+ TVL
-- Smart contract security specialist
-
-## Getting Started
-
-### Quick Start (6 Hours to Live)
-
-See [QUICK_START.md](./QUICK_START.md) for rapid deployment guide.
-
-### Installation
-
-\`\`\`bash
-# Clone the repository
+```bash
+# Clone
 git clone https://github.com/your-username/tesoro.git
-
-# Install dependencies
 cd tesoro
+
+# Install
 npm install
 
-# Copy environment variables
+# Configure environment
 cp .env.example .env.local
-\`\`\`
-
-### Environment Variables
+```
 
 Create `.env.local` with:
 
-\`\`\`env
+```env
 # WalletConnect (Required)
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=your_project_id_here
 
-# Alchemy RPC (Recommended)
+# RPC (Recommended)
 SEPOLIA_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/your_key_here
 
 # Contract Deployment
 PRIVATE_KEY=your_private_key_here
 ETHERSCAN_API_KEY=your_etherscan_key_here
-\`\`\`
+```
 
-**Get API Keys:**
-- WalletConnect: https://cloud.walletconnect.com/
-- Alchemy: https://www.alchemy.com/
-- Etherscan: https://etherscan.io/myapikey
+Helpful links: `https://cloud.walletconnect.com`, `https://www.alchemy.com`, `https://etherscan.io/myapikey`
 
-### Deploy Smart Contracts
+## Development
 
-\`\`\`bash
-# Compile contracts
+```bash
+# Run dev server
+npm run dev
+
+# Build
+npm run build
+
+# Start (production)
+npm run start
+```
+
+Open http://localhost:3000
+
+## Smart Contracts
+
+Compile and deploy to Sepolia:
+
+```bash
+# Compile
 npm run compile
 
-# Deploy to Sepolia testnet
+# Deploy
 npm run deploy:sepolia
 
-# Verify contract on Etherscan
+# Verify
 npm run verify:sepolia CONTRACT_ADDRESS
-\`\`\`
+```
 
-**After deployment:**
-1. Copy contract address from terminal
-2. Update `lib/contracts.ts`:
-   \`\`\`typescript
-   export const TESORO_VAULT_ADDRESS = "0xYourContractAddress"
-   \`\`\`
+After deployment, update the frontend address in `lib/contracts.ts`:
 
-### Get Testnet Tokens
+```ts
+export const TESORO_VAULT_ADDRESS = "0xYourContractAddress"
+```
 
-**Sepolia ETH:**
-- https://sepoliafaucet.com/
-- https://www.infura.io/faucet/sepolia
+Note: The included `scripts/deploy.ts` and `scripts/deploy-contract.ts` demonstrate two deployment patterns. Ensure the constructor/signature you use matches your final `contracts/TesoroVault.sol` implementation and keep `lib/contracts.ts` ABI consistent with the contract.
 
-**Testnet USDC:**
-- https://staging.aave.com/faucet/
-- Request 10,000 USDC for testing
+### Testnet Tokens
 
-### Run Development Server
+- Sepolia ETH: `https://sepoliafaucet.com`, `https://www.infura.io/faucet/sepolia`
+- Testnet USDC: `https://staging.aave.com/faucet/`
 
-\`\`\`bash
-npm run dev
-\`\`\`
+## Deployment (Vercel)
 
-Open [http://localhost:3000](http://localhost:3000)
-
-### Deploy to Production
-
-**Option 1: Deploy from v0**
-1. Click "Publish" button in v0
-2. Add environment variables
-3. Deploy to Vercel
-
-**Option 2: Deploy from GitHub**
-\`\`\`bash
+```bash
 # Push to GitHub
 git push origin main
 
-# Deploy on Vercel
+# Deploy
 vercel --prod
-\`\`\`
+```
+
+Configure the following environment variables in your hosting provider:
+
+- `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID`
+- `SEPOLIA_RPC_URL`
+
+## Security & Notes
+
+- The included Solidity file is a scaffold; integrate full logic and audits before mainnet use.
+- Always test on testnets prior to mainnet deployment.
+- Never commit private keys or secrets. Use environment variables/secret managers.
+
+## Roadmap (indicative)
+
+- MVP on testnet with deposit/withdraw and basic analytics
+- Multi-chain support and protocol integrations (Aave, Compound, Yearn)
+- Admin controls, monitoring, and automated rebalancing
 
 ## Documentation
 
-- [Complete Setup Guide](./COMPLETE_SETUP_GUIDE.md) - Detailed deployment instructions
-- [Quick Start](./QUICK_START.md) - 6-hour rapid deployment
-- [Pitch Deck](./PITCH_DECK.md) - Investor presentation
-- [Application Guide](./APPLICATION_GUIDE.md) - Submission materials
+- [Complete Setup Guide](./docs/COMPLETE_SETUP_GUIDE.md)
+- [Quick Start](./docs/QUICK_START.md)
+- [Pitch Deck](./docs/PITCH_DECK.md)
+- [Application Guide](./docs/APPLICATION_GUIDE.md)
+
+## Contributing
+
+PRs are welcome. Please open an issue for significant changes to discuss scope and approach.
+
+## License
+
+Proprietary — All rights reserved (update if you choose an open-source license).
 
 ---
 
-**Built with ❤️ for SMEs in emerging markets**
+Built for SMEs in emerging markets.
